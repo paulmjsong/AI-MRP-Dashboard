@@ -1,0 +1,12 @@
+{
+  "kpi": {
+    "stock": 351,
+    "stockChange": 0,
+    "openPO": 662,
+    "openPOChange": 0,
+    "reqReceipt": 22,
+    "reqReceiptChange": 0,
+    "reqOrders": 47,
+    "reqOrdersChange": 0
+  }
+}

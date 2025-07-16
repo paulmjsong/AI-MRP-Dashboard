@@ -1,0 +1,43 @@
+# === Node.js ===
+node_modules/
+.pnpm/
+.pnpm-debug.log*
+.pnp.*
+*.tgz
+
+# === Next.js ===
+.next/
+out/
+.vercel/
+
+# === Logs ===
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# === OS Specific ===
+.DS_Store
+Thumbs.db
+
+# === TypeScript ===
+*.tsbuildinfo
+
+# === Env Files ===
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# === IDEs and Editors ===
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# === Misc ===
+dist/
+coverage/

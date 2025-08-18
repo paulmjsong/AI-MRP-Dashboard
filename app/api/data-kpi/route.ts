@@ -18,7 +18,7 @@ const MOCK_KPI_PATH = join(DATA_DIR, "mock-kpi.json");
 
 export async function GET() {
   const exists = await fs.stat(KPI_PATH).then(()=>true).catch(()=>false);
-  console.log("[debug] kpi data exists:", exists);
+  // console.log("[debug] kpi data exists:", exists);
   const path = !exists ? MOCK_KPI_PATH : KPI_PATH;
 
   try {

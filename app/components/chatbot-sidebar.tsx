@@ -1,36 +1,12 @@
 "use client"
 
 import { useChat } from 'ai/react';
-import { Send, MessageCircle, X } from "lucide-react"
+import { Send, MessageCircle, Bot, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Textarea } from "@/components/ui/textarea"
 import { useRef } from "react";
-
-// ------------------------------
-// 0. CONSTANTS
-// ------------------------------
-
-const initialMessages = [
-  {
-    id: "1",
-    role: "assistant" as const,
-    content:
-      "안녕하세요! 저는 셀트리온 AI 어시스턴트입니다. 재고 조회, 생산 계획, 자재 소요량 관련 업무를 도와드릴 수 있습니다. 오늘 어떤 도움이 필요하신가요?",
-  },
-  {
-    id: "2",
-    role: "user" as const,
-    content: "현재 재고 부족 위험이 있는 품목들을 알려주세요.",
-  },
-  {
-    id: "3",
-    role: "assistant" as const,
-    content:
-      "현재 재고 수준을 기준으로 재고 부족 위험 상태인 품목은 다음과 같습니다:\n\n• RM3418-17-001 (Filter): 현재고 1개, 7월 예상 소요량 7개\n• RM3286-16-001 (Consumable): 현재고 0개, 7월 예상 소요량 16개\n\n조치가 필요할 경우, Open PO 확인 또는 추가 발주 여부를 안내해 드릴까요?",
-  },
-];
 
 // ------------------------------
 // 1. CHATBOT SIDEBAR
@@ -39,9 +15,37 @@ const initialMessages = [
 interface ChatbotSidebarProps {
   isOpen: boolean
   onClose: () => void
+  isDemo: boolean
 }
 
-export default function ChatbotSidebar({ isOpen, onClose }: ChatbotSidebarProps) {
+export default function ChatbotSidebar({ isOpen, onClose, isDemo }: ChatbotSidebarProps) {
+  const initialMessages = isDemo ? [
+    {
+      id: "1",
+      role: "assistant" as const,
+      content:
+        "안녕하세요! 저는 셀트리온 AI 어시스턴트입니다. 재고 조회, 생산 계획, 자재 소요량 관련 업무를 도와드릴 수 있습니다. 오늘 어떤 도움이 필요하신가요?",
+    },
+    // {
+    //   id: "2",
+    //   role: "user" as const,
+    //   content: "현재 재고 부족 위험이 있는 품목들을 알려주세요.",
+    // },
+    // {
+    //   id: "3",
+    //   role: "assistant" as const,
+    //   content:
+    //     "현재 재고 수준을 기준으로 재고 부족 위험 상태인 품목은 다음과 같습니다:\n\n• RM3418-17-001 (Filter): 현재고 1개, 7월 예상 소요량 7개\n• RM3286-16-001 (Consumable): 현재고 0개, 7월 예상 소요량 16개\n\n조치가 필요할 경우, Open PO 확인 또는 추가 발주 여부를 안내해 드릴까요?",
+    // },
+  ] : [
+    {
+      id: "1",
+      role: "assistant" as const,
+      content:
+        "안녕하세요! 저는 AI-MRP 어시스턴트입니다. 재고 조회, 생산 계획, 자재 소요량 관련 업무를 도와드릴 수 있습니다. 오늘 어떤 도움이 필요하신가요?",
+    },
+  ];
+
   const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat({
     api: '/dashboard/api/chat',
     initialMessages,
@@ -84,7 +88,11 @@ export default function ChatbotSidebar({ isOpen, onClose }: ChatbotSidebarProps)
       <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-green-50">
         <div className="flex items-center gap-2">
           <MessageCircle className="h-5 w-5 text-green-600" />
-          <h3 className="font-semibold text-gray-900">셀트리온 AI 어시스턴트</h3>
+          { isDemo ? (
+            <h3 className="font-semibold text-gray-900">셀트리온 AI 어시스턴트</h3>
+          ) : (
+            <h3 className="font-semibold text-gray-900">AI-MRP 어시스턴트</h3>
+          )}
         </div>
         <Button variant="ghost" size="sm" onClick={onClose}>
           <X className="h-4 w-4" />
@@ -95,29 +103,37 @@ export default function ChatbotSidebar({ isOpen, onClose }: ChatbotSidebarProps)
       <div className="p-4 border-b border-gray-100">
         <p className="text-xs text-gray-500 mb-2">빠른 작업:</p>
         <div className="flex flex-wrap gap-2">
+          {/* <Button
+            variant="outline"
+            size="sm"
+            className="text-xs bg-transparent"
+            onClick={() => handleQuickAction("현재 재고 기준으로 입고 필요 상태에 있는 품목 목록과 부족 수량을 알려주세요.")}
+          >
+            입고 필요 품목
+          </Button> */}
           <Button
             variant="outline"
             size="sm"
             className="text-xs bg-transparent"
-            onClick={() => handleQuickAction("현재 재고 기준으로 위험 상태(재고 부족)에 있는 품목 목록과 부족 수량을 알려주세요.")}
+            onClick={() => handleQuickAction("FT0000-004의 보유 재고 소진 날짜와 부족 수량을 알려주세요.")}
           >
-            위험 품목 보기
+            재고 소진 날짜
           </Button>
           <Button
             variant="outline"
             size="sm"
             className="text-xs bg-transparent"
-            onClick={() => handleQuickAction("진행 중인 작업지시·생산 주문 중 일정이 지연된 항목과 지연 사유를 요약해서 보여주세요.")}
+            onClick={() => handleQuickAction("FT0000-004의 추가 발주 필요 날짜와 추가 발주 필요량을 알려주세요.")}
           >
-            지연 주문
+            발주 필요 날짜
           </Button>
           <Button
             variant="outline"
             size="sm"
             className="text-xs bg-transparent"
-            onClick={() => handleQuickAction("재고 현황, 생산 진행, 자재 소요량 중 어떤 보고서를 생성할지 선택지를 제시해 주세요.")}
+            onClick={() => handleQuickAction("지금까지의 대화 내용을 markdown 표의 형식으로 요약해 주세요.")}
           >
-            보고서 생성
+            답변 내용 요약
           </Button>
         </div>
       </div>
@@ -136,7 +152,7 @@ export default function ChatbotSidebar({ isOpen, onClose }: ChatbotSidebarProps)
               </div>
             </div>
           ))}
-          {isLoading && (<div className="text-sm text-muted-foreground">…thinking</div>)}
+          {isLoading && (<div className="text-sm text-muted-foreground">AI 어시스턴스가 대답을 생성 중입니다…</div>)}
           {error && (<p className="mt-2 text-sm text-destructive">{error.message}</p>)}
         </div>
       </ScrollArea>

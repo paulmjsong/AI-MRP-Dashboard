@@ -27,8 +27,8 @@ async function safeRead(path: string, fallback: string) {
 
 export async function POST(req: Request) {
   const currDate = new Date();
-  const year  = currDate.getUTCFullYear() - 10; // full year (assume 2015 = 2025)
-  const month = currDate.getMonth() + 1;        // full month (1 = January)
+  const year  = currDate.getUTCFullYear(); // full year (assume 2015 = 2025)
+  const month = currDate.getMonth() + 1;   // full month (1 = January)
   const today = `${year}-${month.toString().padStart(2, "0")}`;
 
   try {
@@ -47,16 +47,30 @@ export async function POST(req: Request) {
       role: "system" as const,
       content: `
 You are the AI assistant embedded inside an analytics dashboard.
-Here is the current data you MUST use to answer:
 
-─── KPI (JSON) ───
+─── DATA ───
+KPI data:
 ${JSON.stringify(kpi, null, 2)}
 
-─── FORECAST (JSON) ───
+Forecast data:
 ${JSON.stringify(forecast, null, 2)}
 
-When you respond, cite numbers directly from the data and avoid speculation.
-When accessing an array, assume first item is current ${today}.`,
+Current date: ${today}
+
+─── INSTRUCTIONS ───
+✅ Use the KPI and forecast data provided to deliver insights.
+✅ Always refer to values naturally, without exposing variable names, JSON structures, or technical details.
+✅ Do not mention how the data is stored or accessed (e.g., avoid saying “in kpi[0]" or “from the JSON file").
+✅ Speak as if summarizing data from a live dashboard.
+
+✅ When accessing arrays, assume the first item represents today. Refer to dates and periods conversationally (e.g., “today," “this week," “next month").
+✅ When presenting forecasts, describe them as forward-looking insights (e.g., “We expect sales to rise by 4% next quarter").
+
+Example:
+
+❌ Don't say: “In kpi[0], revenue is $1.2M."
+
+✅ Say: “Today's revenue is $1.2M."`
     };
     
     // call LLM

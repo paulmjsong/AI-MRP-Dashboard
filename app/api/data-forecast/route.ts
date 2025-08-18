@@ -18,7 +18,7 @@ const MOCK_FORECAST_PATH = join(DATA_DIR, "mock-forecast.json");
 
 export async function GET() {
   const exists = await fs.stat(FORECAST_PATH).then(()=>true).catch(()=>false);
-  console.log("[debug] forecast data exists:", exists);
+  // console.log("[debug] forecast data exists:", exists);
   const path = !exists ? MOCK_FORECAST_PATH : FORECAST_PATH;
 
   try {

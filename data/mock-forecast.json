@@ -1,7 +1,7 @@
 {
   "filter": [
     {
-      "partNo": "RM3418-17-001",
+      "partNo": "FT0000-001",
       "backupPartNos": [],
       "category": "Filter",
       "currentStock": 1,
@@ -28,7 +28,7 @@
       ]
     },
     {
-      "partNo": "RM3416-17-001",
+      "partNo": "FT0000-002",
       "backupPartNos": [],
       "category": "Filter",
       "currentStock": 7,
@@ -55,7 +55,7 @@
       ]
     },
     {
-      "partNo": "RM3354-19-001",
+      "partNo": "FT0000-003",
       "backupPartNos": [],
       "category": "Filter",
       "currentStock": 27,
@@ -82,8 +82,8 @@
       ]
     },
     {
-      "partNo": "RM3376-24-001",
-      "backupPartNos": ["RM3358-24-001"],
+      "partNo": "FT0000-004",
+      "backupPartNos": ["FT0000-011"],
       "category": "Filter",
       "expiration": "60M",
       "currentStock": 86,
@@ -110,7 +110,7 @@
       ]
     },
     {
-      "partNo": "RM3358-24-001",
+      "partNo": "FT0000-005",
       "backupPartNos": [],
       "category": "Filter",
       "expiration": "60M",
@@ -140,7 +140,7 @@
   ],
   "consumable": [
     {
-      "partNo": "SM0083-01-001",
+      "partNo": "CS0000-001",
       "backupPartNos": [],
       "category": "Consumable",
       "currentStock": 4,
@@ -167,7 +167,7 @@
       ]
     },
     {
-      "partNo": "RM3449-10-001",
+      "partNo": "CS0000-002",
       "backupPartNos": [],
       "category": "Consumable",
       "currentStock": 2,
@@ -194,7 +194,7 @@
       ]
     },
     {
-      "partNo": "RM3474-05-001",
+      "partNo": "CS0000-003",
       "backupPartNos": [],
       "category": "Consumable",
       "currentStock": 0,
@@ -221,7 +221,7 @@
       ]
     },
     {
-      "partNo": "RM3326-07-001",
+      "partNo": "CS0000-004",
       "backupPartNos": [],
       "category": "Consumable",
       "currentStock": 112,
@@ -248,8 +248,8 @@
       ]
     },
     {
-      "partNo": "RM3286-16-001",
-      "backupPartNos": ["미사용"],
+      "partNo": "CS0000-005",
+      "backupPartNos": ["CS0000-011"],
       "category": "Consumable",
       "currentStock": 0,
       "totalStock": 0,

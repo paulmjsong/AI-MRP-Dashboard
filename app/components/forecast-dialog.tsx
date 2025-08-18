@@ -48,9 +48,9 @@ function getActionsColor(actions: string) {
 // ------------------------------
 
 interface ForecastDialogProps {
-  isOpen: boolean
-  onClose: () => void
-  selectedItem: ForecastItem | null
+  isOpen: boolean;
+  onClose: () => void;
+  selectedItem: ForecastItem | null;
 }
 
 export default function ForecastDialog({ isOpen, onClose, selectedItem }: ForecastDialogProps) {
@@ -63,7 +63,7 @@ export default function ForecastDialog({ isOpen, onClose, selectedItem }: Foreca
   const rows: JSX.Element[] = [];
   const points: { month: string; stock: number }[] = [];
 
-  const MAX_FORECAST = selectedItem.monthlyUsage.length
+  const MAX_FORECAST = selectedItem.monthlyUsage.length;
 
   for (let i = 0; i < MAX_FORECAST; i++) {
     const year = (currMonth + i > 11) ? currYear + 1 : currYear;
@@ -84,8 +84,8 @@ export default function ForecastDialog({ isOpen, onClose, selectedItem }: Foreca
         <TableCell>{selectedItem.monthlyUsage[i]}개</TableCell>
         <TableCell>{selectedItem.monthlyExpiry[i]}개</TableCell>
         <TableCell>{selectedItem.monthlyReceipt[i]}개</TableCell>
-        <TableCell>{selectedItem.expectedTotal[i]}개</TableCell>
-        <TableCell>{selectedItem.expectedWithPO[i]}개</TableCell>
+        <TableCell className="shaded">{selectedItem.expectedTotal[i]}개</TableCell>
+        <TableCell className="shaded">{selectedItem.expectedWithPO[i]}개</TableCell>
         <TableCell>
           <Badge className={getActionsColor(actions)}>{actions}</Badge>
         </TableCell>
@@ -143,8 +143,8 @@ export default function ForecastDialog({ isOpen, onClose, selectedItem }: Foreca
                     <TableHead>예상 사용량</TableHead>
                     <TableHead>유효기간 만료</TableHead>
                     <TableHead>입고 예정</TableHead>
-                    <TableHead>예상 재고</TableHead>
-                    <TableHead>PO 포함</TableHead>
+                    <TableHead className="shaded">예상 재고</TableHead>
+                    <TableHead className="shaded">PO 포함 재고</TableHead>
                     <TableHead>재고 상태</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -155,11 +155,11 @@ export default function ForecastDialog({ isOpen, onClose, selectedItem }: Foreca
 
           {/* 차트 영역 */}
           <div>
-            <h3 className="text-lg font-semibold mb-3">재고 및 사용량 추이</h3>
+            <h3 className="text-lg font-semibold mb-3">PO 포함 예상 재고 수량</h3>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={chartData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="month" tick={{ fontSize: 11 }} />
+                <XAxis tick={{ fontSize: 11 }} dataKey="month" />
                 <YAxis tick={{ fontSize: 11 }} />
                 <ReferenceLine
                   y={0}

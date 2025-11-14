@@ -18,7 +18,8 @@ const SHEET_NAMES = [
   'Filter Forecast',
   'Consumable Forecast',
 ]
-const MAX_ITEMS = 10;     // temporary
+const START_INDEX = 10;     // temporary
+const MAX_ITEMS = 5;     // temporary
 const MAX_FORECAST = 12;  // from -1 month to +11 months
 
 type Cell = string | number | null;
@@ -82,7 +83,7 @@ function getForecast(sheet: Sheet): ForecastData {
   const currYear = 2015 - 2014;                  // zero-based index (assume today is 2015)
   const currMonth = currDate.getMonth();         // zero-based index (0 = January)
 
-  for (let i = 0; i < MAX_ITEMS * 5; i += 5) {
+  for (let i = START_INDEX; i < START_INDEX + MAX_ITEMS * 5; i += 5) {
     const backupPartNos  = [];
     const monthlyUsage   = [];
     const monthlyExpiry  = [];

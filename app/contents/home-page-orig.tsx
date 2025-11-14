@@ -38,7 +38,7 @@ interface HomePageProps {
 }
 
 export default function HomePage({ kpi, forecast }: HomePageProps) {
-  const [searchTerm, setSearchTerm] = useState("")
+  // const [searchTerm, setSearchTerm] = useState("")
   const [selectedItem, setSelectedItem] = useState(null)
   const [isInfoOpen, setisInfoOpen] = useState(false)
 
@@ -186,7 +186,7 @@ export default function HomePage({ kpi, forecast }: HomePageProps) {
                   <CardDescription>예측 기반 재고 관리 및 위험도 분석</CardDescription>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="relative">
+                  {/* <div className="relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                     <Input
                       placeholder="부품 번호 검색..."
@@ -194,7 +194,7 @@ export default function HomePage({ kpi, forecast }: HomePageProps) {
                       onChange={(e) => setSearchTerm(e.target.value)}
                       className="pl-10 w-64"
                     />
-                  </div>
+                  </div> */}
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="outline" size="sm">
@@ -300,7 +300,7 @@ export default function HomePage({ kpi, forecast }: HomePageProps) {
                   <CardDescription>예측 기반 재고 관리 및 위험도 분석</CardDescription>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="relative">
+                  {/* <div className="relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                     <Input
                       placeholder="부품 번호 검색..."
@@ -308,7 +308,7 @@ export default function HomePage({ kpi, forecast }: HomePageProps) {
                       onChange={(e) => setSearchTerm(e.target.value)}
                       className="pl-10 w-64"
                     />
-                  </div>
+                  </div> */}
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="outline" size="sm">

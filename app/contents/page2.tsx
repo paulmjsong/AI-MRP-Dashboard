@@ -1,6 +1,6 @@
-"use-client"
+// "use-client"
 
-import { useState } from "react"
+// import { useState } from "react"
 import { mutate } from "swr";
 import {
   Package, PackagePlus, PackageMinus, PackageX, ClipboardList, AlertTriangle,
@@ -156,10 +156,11 @@ const inventoryStatus = [
 interface PageProps {
   kpi: any;
   forecast: any;
+  lastUpdate: any;
 }
 
-export default function Page2({ kpi, forecast }: PageProps) {
-  const [searchTerm, setSearchTerm] = useState("")
+export default function Page2({ kpi, forecast, lastUpdate }: PageProps) {
+  // const [searchTerm, setSearchTerm] = useState("")
   // const [selectedItem, setSelectedItem] = useState(null)
   // const [isInfoOpen, setisInfoOpen] = useState(false)
 
@@ -260,7 +261,10 @@ export default function Page2({ kpi, forecast }: PageProps) {
               <CardDescription>재고별 수량·상태, 저장 위치, 입고일, 만료일 등 파악</CardDescription>
             </div>
             <div className="flex items-center gap-2">
-              <div className="relative">
+              <div className="text-sm italic text-gray-600 mr-2">
+                마지막 업데이트 : {lastUpdate[0]}, {lastUpdate[1]}
+              </div>
+              {/* <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <Input
                   placeholder="재고 번호 검색..."
@@ -268,7 +272,7 @@ export default function Page2({ kpi, forecast }: PageProps) {
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-10 w-64"
                 />
-              </div>
+              </div> */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" size="sm">

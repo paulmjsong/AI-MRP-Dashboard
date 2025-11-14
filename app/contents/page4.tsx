@@ -1,6 +1,6 @@
-"use-client"
+// "use-client"
 
-import { useState } from "react"
+// import { useState } from "react"
 import { mutate } from "swr";
 import { format, differenceInCalendarDays, addDays, isBefore, parseISO } from 'date-fns'
 import {
@@ -17,7 +17,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 // import ForecastDialog from "../components/forecast-dialog"
-import POGanttChart from "../components/po-gantt-chart"
+// import POGanttChart from "../components/po-gantt-chart"
 
 // ------------------------------
 // 0. CONSTANTS & UTILITIES
@@ -169,10 +169,11 @@ const openPOs = [
 interface PageProps {
   kpi: any;
   forecast: any;
+  lastUpdate: any;
 }
 
-export default function Page1({ kpi, forecast }: PageProps) {
-  const [searchTerm, setSearchTerm] = useState("")
+export default function Page1({ kpi, forecast, lastUpdate }: PageProps) {
+  // const [searchTerm, setSearchTerm] = useState("")
   // const [selectedItem, setSelectedItem] = useState(null)
   // const [isInfoOpen, setisInfoOpen] = useState(false)
 
@@ -282,7 +283,10 @@ export default function Page1({ kpi, forecast }: PageProps) {
                 <CardDescription>미입고된 발주서 정보 표시</CardDescription>
               </div>
               <div className="flex items-center gap-2">
-                <div className="relative">
+                <div className="text-sm italic text-gray-600 mr-2">
+                  마지막 업데이트 : {lastUpdate[0]}, {lastUpdate[1]}
+                </div>
+                {/* <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                   <Input
                     placeholder="PO 번호 검색..."
@@ -290,7 +294,7 @@ export default function Page1({ kpi, forecast }: PageProps) {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="pl-10 w-64"
                   />
-                </div>
+                </div> */}
               </div>
             </div>
           </CardHeader>
@@ -360,7 +364,7 @@ export default function Page1({ kpi, forecast }: PageProps) {
       </div>
 
       {/* 타임라인 */}
-      <Card>
+      {/* <Card>
         <CardHeader>
           <CardTitle>Open PO 타임라인</CardTitle>
           <CardDescription>Timeline: {format(minDate, 'yyyy-MM-dd')} to {format(maxDate, 'yyyy-MM-dd')}</CardDescription>
@@ -384,7 +388,7 @@ export default function Page1({ kpi, forecast }: PageProps) {
             <POGanttChart data={openPOs} minDate={minDate} maxDate={maxDate} />
           )}
         </CardContent>
-      </Card>
+      </Card> */}
     </>
   )
 }

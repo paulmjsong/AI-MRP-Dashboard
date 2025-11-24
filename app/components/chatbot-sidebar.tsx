@@ -16,9 +16,10 @@ interface ChatbotSidebarProps {
   isOpen: boolean
   onClose: () => void
   isDemo: boolean
+  itemExample: string
 }
 
-export default function ChatbotSidebar({ isOpen, onClose, isDemo }: ChatbotSidebarProps) {
+export default function ChatbotSidebar({ isOpen, onClose, isDemo, itemExample }: ChatbotSidebarProps) {
   const initialMessages = isDemo ? [
     {
       id: "1",
@@ -107,7 +108,7 @@ export default function ChatbotSidebar({ isOpen, onClose, isDemo }: ChatbotSideb
             variant="outline"
             size="sm"
             className="text-xs bg-transparent"
-            onClick={() => handleQuickAction("현재 재고 기준으로 입고 필요 상태에 있는 품목 목록과 부족 수량을 알려주세요.")}
+            onClick={() => handleQuickAction(`현재 재고 기준으로 입고 필요 상태에 있는 품목 목록과 부족 수량을 알려주세요.`)}
           >
             입고 필요 품목
           </Button> */}
@@ -115,7 +116,7 @@ export default function ChatbotSidebar({ isOpen, onClose, isDemo }: ChatbotSideb
             variant="outline"
             size="sm"
             className="text-xs bg-transparent"
-            onClick={() => handleQuickAction("FT0000-004의 보유 재고 소진 날짜와 부족 수량을 알려주세요.")}
+            onClick={() => handleQuickAction(`${itemExample}의 보유 재고 소진 날짜와 부족 수량을 알려주세요.`)}
           >
             재고 소진 날짜
           </Button>
@@ -123,7 +124,7 @@ export default function ChatbotSidebar({ isOpen, onClose, isDemo }: ChatbotSideb
             variant="outline"
             size="sm"
             className="text-xs bg-transparent"
-            onClick={() => handleQuickAction("FT0000-004의 추가 발주 필요 날짜와 추가 발주 필요량을 알려주세요.")}
+            onClick={() => handleQuickAction(`${itemExample}의 추가 발주 필요 날짜와 추가 발주 필요량을 알려주세요.`)}
           >
             발주 필요 날짜
           </Button>
@@ -131,7 +132,7 @@ export default function ChatbotSidebar({ isOpen, onClose, isDemo }: ChatbotSideb
             variant="outline"
             size="sm"
             className="text-xs bg-transparent"
-            onClick={() => handleQuickAction("지금까지의 대화 내용을 markdown 표의 형식으로 요약해 주세요.")}
+            onClick={() => handleQuickAction(`지금까지의 대화 내용을 markdown 표의 형식으로 요약해 주세요.`)}
           >
             답변 내용 요약
           </Button>

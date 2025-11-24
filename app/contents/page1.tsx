@@ -142,9 +142,9 @@ export default function Page1({ kpi, forecast, lastUpdate }: PageProps) {
                   <CardDescription>12,500, 15,000L 기준</CardDescription>
                 </div>
                 <div className="flex items-center gap-2">
-                <div className="text-sm italic text-gray-600 mr-2">
-                  마지막 업데이트 : {lastUpdate[0]}, {lastUpdate[1]}
-                </div>
+                  <div className="text-sm italic text-gray-500 mr-2">
+                    마지막 업데이트 : {lastUpdate[0]}, {lastUpdate[1]}
+                  </div>
                   {/* <div className="relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                     <Input
@@ -240,6 +240,9 @@ export default function Page1({ kpi, forecast, lastUpdate }: PageProps) {
                   <CardDescription>Initial Purification 기준</CardDescription>
                 </div>
                 <div className="flex items-center gap-2">
+                  <div className="text-sm italic text-gray-500 mr-2">
+                    마지막 업데이트 : {lastUpdate[0]}, {lastUpdate[1]}
+                  </div>
                   {/* <div className="relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                     <Input
@@ -334,8 +337,11 @@ export default function Page1({ kpi, forecast, lastUpdate }: PageProps) {
                   <CardTitle>최종 제품 단계</CardTitle>
                   <CardDescription>DP 기준</CardDescription>
                 </div>
-                {/* <div className="flex items-center gap-2">
-                  <div className="relative">
+                <div className="flex items-center gap-2">
+                  <div className="text-sm italic text-gray-500 mr-2">
+                    마지막 업데이트 : {lastUpdate[0]}, {lastUpdate[1]}
+                  </div>
+                  {/* <div className="relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                     <Input
                       placeholder="프로젝트 검색..."
@@ -343,8 +349,8 @@ export default function Page1({ kpi, forecast, lastUpdate }: PageProps) {
                       onChange={(e) => setSearchTerm(e.target.value)}
                       className="pl-10 w-64"
                     />
-                  </div>
-                </div> */}
+                  </div> */}
+                </div>
               </div>
             </CardHeader>
             <CardContent>

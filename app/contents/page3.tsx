@@ -147,7 +147,7 @@ export default function Page2({ kpi, forecast, lastUpdate }: PageProps) {
                   <CardDescription>제품별 BOM 정보 조회</CardDescription>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="text-sm italic text-gray-600 mr-2">
+                  <div className="text-sm italic text-gray-500 mr-2">
                     마지막 업데이트 : {lastUpdate[0]}, {lastUpdate[1]}
                   </div>
                   {/* <div className="relative">
@@ -253,6 +253,9 @@ export default function Page2({ kpi, forecast, lastUpdate }: PageProps) {
                   <CardDescription>제품별 BOM 정보 조회</CardDescription>
                 </div>
                 <div className="flex items-center gap-2">
+                  <div className="text-sm italic text-gray-500 mr-2">
+                    마지막 업데이트 : {lastUpdate[0]}, {lastUpdate[1]}
+                  </div>
                   {/* <div className="relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                     <Input

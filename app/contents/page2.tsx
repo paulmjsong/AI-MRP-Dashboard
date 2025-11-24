@@ -261,7 +261,7 @@ export default function Page2({ kpi, forecast, lastUpdate }: PageProps) {
               <CardDescription>재고별 수량·상태, 저장 위치, 입고일, 만료일 등 파악</CardDescription>
             </div>
             <div className="flex items-center gap-2">
-              <div className="text-sm italic text-gray-600 mr-2">
+              <div className="text-sm italic text-gray-500 mr-2">
                 마지막 업데이트 : {lastUpdate[0]}, {lastUpdate[1]}
               </div>
               {/* <div className="relative">

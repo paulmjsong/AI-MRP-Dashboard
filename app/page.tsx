@@ -178,7 +178,7 @@ export default function Page() {
         }} />
 
         {/* AI 챗봇 사이드바 */}
-        <ChatbotSidebar isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} isDemo={IS_DEMO} />
+        <ChatbotSidebar isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} isDemo={IS_DEMO} itemExample={forecast.data.filter[0].partNo} />
         {!isChatOpen && (
           <button className="fixed right-3 bottom-6 z-50 flex flex-col items-center" onClick={() => setIsChatOpen(true)}>
             <div className="relative mb-3 bg-white rounded-xl p-2 shadow-lg flex flex-col items-center text-xs text-gray-800
